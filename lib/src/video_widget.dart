@@ -198,14 +198,16 @@ class _NativeVideoViewState extends State<NativeVideoView> {
   /// Notifies when an action of the player (play, pause & stop) must be
   /// reflected by the media controller view.
   void notifyControlChanged(_MediaControl mediaControl) {
-    if (_mediaController != null)
+    if (_mediaController != null) {
       _mediaController!.notifyControlPressed(mediaControl);
+    }
   }
 
   /// Notifies the player position to the media controller view.
   void notifyPlayerPosition(int position, int duration) {
-    if (_mediaController != null)
+    if (_mediaController != null) {
       _mediaController!.notifyPositionChanged(position, duration);
+    }
   }
 
   /// Function that is called when the platform notifies that an error has
@@ -213,8 +215,9 @@ class _NativeVideoViewState extends State<NativeVideoView> {
   /// This function calls the widget's [ErrorCallback] instance.
   void onError(
       VideoViewController controller, int what, int extra, String? message) {
-    if (widget.onError != null)
+    if (widget.onError != null) {
       widget.onError!(controller, what, extra, message);
+    }
   }
 
   /// Function that is called when the platform notifies that the video
