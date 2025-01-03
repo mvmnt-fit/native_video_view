@@ -239,7 +239,7 @@ class _MediaControlsState extends State<_MediaControls> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black.withOpacity(0.5),
+      color: Colors.black..withValues(alpha: 0.5),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -388,8 +388,9 @@ class _MediaControlsState extends State<_MediaControls> {
   /// and the playback position needs to be updated through the video controller.
   void _onSliderPositionChanged(double position) {
     _onPositionChanged(position.toInt(), _duration.toInt());
-    if (widget.onPositionChanged != null)
+    if (widget.onPositionChanged != null) {
       widget.onPositionChanged!(position.toInt(), _duration.toInt());
+    }
     _resetAutoHideTimer();
   }
 
@@ -506,7 +507,8 @@ class _MediaControlsController {
 
   /// Notifies when the video controller changes the playback position.
   void notifyPositionChanged(int position, int duration) {
-    if (_positionChangedCallback != null)
+    if (_positionChangedCallback != null) {
       _positionChangedCallback!(position, duration);
+    }
   }
 }
